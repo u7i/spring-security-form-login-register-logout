@@ -6,7 +6,7 @@ import com.cb.model.Role;
 import com.cb.model.User;
 import com.cb.repository.RoleRepository;
 import com.cb.repository.UserRepository;
-import com.cb.util.TbConstants;
+import com.cb.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,10 +27,10 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(UserDto userDto) {
-        Role role = roleRepository.findByName(TbConstants.Roles.USER);
+        Role role = roleRepository.findByName(Roles.USER);
 
         if (role == null)
-            role = roleRepository.save(new Role(TbConstants.Roles.USER));
+            role = roleRepository.save(new Role(Roles.USER));
 
         User user = new User(userDto.getName(), userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()),
                 Arrays.asList(role));
