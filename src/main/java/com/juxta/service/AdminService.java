@@ -1,6 +1,6 @@
-package com.cb.service;
+package com.juxta.service;
 
-import com.cb.util.Roles;
+import com.juxta.util.Roles;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Service;
 

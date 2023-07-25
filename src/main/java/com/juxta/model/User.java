@@ -1,4 +1,4 @@
-package com.cb.model;
+package com.juxta.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

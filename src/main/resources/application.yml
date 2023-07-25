@@ -18,3 +18,4 @@ spring:
       idle-timeout: 10000
       max-lifetime: 1000
       auto-commit: true
+jwtSecretCode: grigory

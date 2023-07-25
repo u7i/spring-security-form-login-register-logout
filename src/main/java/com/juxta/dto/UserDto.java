@@ -1,4 +1,4 @@
-package com.cb.dto;
+package com.juxta.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;

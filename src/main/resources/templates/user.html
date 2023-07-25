@@ -16,9 +16,7 @@
             <div class="mt-2">Username: <span sec:authentication="principal.username"/></div>
             <div class="mt-2"> Roles: <span sec:authentication="principal.authorities"/></div>
             <br>
-            <form th:action="@{/logout}" th:method="POST">
-                <input type="submit" value="Logout"/>
-            </form>
+            <a th:href="@{/logout}">Logout!</a>
         </div>
     </div>
 </div>

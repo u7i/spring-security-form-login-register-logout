@@ -1,4 +1,4 @@
-package com.cb.conf;
+package com.juxta.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,7 +20,8 @@ public class SpringSecurity {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         //noinspection removal
-        http.authorizeHttpRequests((requests) -> requests
+        http.csrf().disable()
+                .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/registration/**").permitAll()
                         .requestMatchers("/login/**").permitAll()
                         .requestMatchers("/user/**").hasAnyRole("USER", "ADMIN")
@@ -30,7 +31,7 @@ public class SpringSecurity {
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .loginProcessingUrl("/login")
-                        .defaultSuccessUrl("/user")
+                        .defaultSuccessUrl("/user", true)
                         .permitAll()
                 )
                 .logout((logout) -> logout.logoutUrl("/logout").logoutSuccessUrl("/login"))

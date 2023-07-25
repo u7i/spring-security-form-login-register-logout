@@ -1,4 +1,4 @@
-package com.cb.util;
+package com.juxta.util;
 
 public interface Roles {
     String USER = "ROLE_USER";

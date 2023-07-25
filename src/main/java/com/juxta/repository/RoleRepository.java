@@ -1,6 +1,6 @@
-package com.cb.repository;
+package com.juxta.repository;
 
-import com.cb.model.Role;
+import com.juxta.model.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

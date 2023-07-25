@@ -1,8 +1,8 @@
-package com.cb.controller;
+package com.juxta.controller;
 
-import com.cb.dto.UserDto;
-import com.cb.model.User;
-import com.cb.service.UserService;
+import com.juxta.dto.UserDto;
+import com.juxta.model.User;
+import com.juxta.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

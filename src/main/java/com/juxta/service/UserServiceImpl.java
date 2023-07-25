@@ -1,13 +1,14 @@
-package com.cb.service;
+package com.juxta.service;
 
 
-import com.cb.dto.UserDto;
-import com.cb.model.Role;
-import com.cb.model.User;
-import com.cb.repository.RoleRepository;
-import com.cb.repository.UserRepository;
-import com.cb.util.Roles;
+import com.juxta.dto.UserDto;
+import com.juxta.model.Role;
+import com.juxta.model.User;
+import com.juxta.repository.RoleRepository;
+import com.juxta.repository.UserRepository;
+import com.juxta.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+        return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found!"));
     }
 }

@@ -1,8 +1,8 @@
-package com.cb.service;
+package com.juxta.service;
 
 
-import com.cb.model.User;
-import com.cb.repository.UserRepository;
+import com.juxta.model.User;
+import com.juxta.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -21,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
 
-        User user = userRepository.findByEmail(usernameOrEmail);
+        User user = userRepository.findByEmail(usernameOrEmail).orElseThrow(() -> new UsernameNotFoundException("User not found!"));
         if (user != null) {
             return new org.springframework.security.core.userdetails.User(user.getEmail()
                     , user.getPassword(),
