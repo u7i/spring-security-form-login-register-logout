@@ -1,4 +1,4 @@
-package com.juxta.service;
+package com.juxta.service.impl;
 
 
 import com.juxta.dto.UserDto;
@@ -6,13 +6,15 @@ import com.juxta.model.Role;
 import com.juxta.model.User;
 import com.juxta.repository.RoleRepository;
 import com.juxta.repository.UserRepository;
-import com.juxta.util.Roles;
+import com.juxta.service.UserService;
+import com.juxta.util.ERole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -28,18 +30,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void saveUser(UserDto userDto) {
-        Role role = roleRepository.findByName(Roles.USER);
+        Role role = roleRepository.findByName(ERole.ROLE_USER);
 
-        if (role == null)
-            role = roleRepository.save(new Role(Roles.USER));
+        if (role == null) {
+            role = roleRepository.save(new Role(ERole.ROLE_USER));
+        }
 
-        User user = new User(userDto.getName(), userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()),
-                Arrays.asList(role));
+        User user = new User(userDto.getName(), userDto.getEmail(), passwordEncoder.encode(userDto.getPassword()), role);
         userRepository.save(user);
     }
 
     @Override
     public User findUserByEmail(String email) {
-        return userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found!"));
+        return userRepository.findByEmail(email).orElse(null);
     }
 }

@@ -21,14 +21,14 @@ public class LoginController {
 
     @RequestMapping("/login")
     public String loginForm() {
-        return "login";
+        return "/login";
     }
 
     @GetMapping("/registration")
     public String registrationForm(Model model) {
         UserDto user = new UserDto();
         model.addAttribute("user", user);
-        return "registration";
+        return "/registration";
     }
 
     @PostMapping("/registration")

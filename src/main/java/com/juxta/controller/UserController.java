@@ -2,7 +2,11 @@ package com.juxta.controller;
 
 import com.juxta.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -16,11 +20,13 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String registrationForm() {
+    public String registrationForm(Authentication authentication, Model model) {
+        model.addAttribute("user", authentication);
         return "/user";
     }
 
     @GetMapping("/admin")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String adminPage() {
         adminService.onlyAdmin();
         return "/admin";

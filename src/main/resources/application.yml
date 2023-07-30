@@ -18,4 +18,7 @@ spring:
       idle-timeout: 10000
       max-lifetime: 1000
       auto-commit: true
-jwtSecretCode: grigory
+jwt:
+  secretCode: 7d73ee0f561ac8b2f24e4f49aba7dcacf11aee6ac9f8d2c197958265fd7d0ad3c8cd2b1ac449e481834b2aa831359665d829b3a041d5d6b61ad4fbc3d9a803ab
+  expirationDate: 31536000000
+#31536000000

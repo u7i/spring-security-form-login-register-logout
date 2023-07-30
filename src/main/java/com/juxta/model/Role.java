@@ -1,5 +1,6 @@
 package com.juxta.model;
 
+import com.juxta.util.ERole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -19,12 +20,11 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true)
-    private String name;
-    @ManyToMany(mappedBy = "roles")
-    private List<User> users = new ArrayList<>();
+    private ERole name;
 
-    public Role(String name) {
+    public Role(ERole name) {
         this.name = name;
     }
 }

@@ -1,8 +1,4 @@
-### Prerequisite
+### Documentation
+Project usage is Spring Security with JWt authentication + Spring Data JPA
 
-Create a database in MySql with the help of below mentioned query:
-
-``` CREATE SCHEMA `spring-security-form-login`; ```
-
-Documentation: https://www.codeburps.com/post/spring-boot-form-login
-
+```3 tables: roles, users, users_roles```
