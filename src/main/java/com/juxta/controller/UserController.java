@@ -26,7 +26,6 @@ public class UserController {
     }
 
     @GetMapping("/admin")
-    @PreAuthorize("hasAuthority('ADMIN')")
     public String adminPage() {
         adminService.onlyAdmin();
         return "/admin";
