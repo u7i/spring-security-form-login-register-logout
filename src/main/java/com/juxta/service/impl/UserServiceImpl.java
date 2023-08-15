@@ -8,13 +8,10 @@ import com.juxta.repository.RoleRepository;
 import com.juxta.repository.UserRepository;
 import com.juxta.service.UserService;
 import com.juxta.util.ERole;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.Arrays;
-import java.util.Set;
 
 @Service
 public class UserServiceImpl implements UserService {
